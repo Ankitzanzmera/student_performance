@@ -24,5 +24,5 @@ setup(
     author= "Ankit Zanzmera",
     author_email="22msrds052@jainuniversity.ac.in",
     packages=find_packages(),
-    install_requires = get_requirements('requirement.txt')
+    install_requires = get_requirements('requirements.txt')
 )
