@@ -17,7 +17,7 @@ list_of_file = [
     "src/pipelines/prediction_pipeline.py",
     "src/logger.py",
     "src/exception.py",
-    "src/utils.py"
+    "src/utils.py",
     "app.py",
     "Dockerfile",
     "requirements.txt"

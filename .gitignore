@@ -5,7 +5,7 @@ __pycache__/
 
 # personal
 /notes
-
+/logs
 # C extensions
 *.so
 
