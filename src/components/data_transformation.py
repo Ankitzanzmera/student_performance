@@ -96,7 +96,7 @@ class DataTransformation:
             return (
                 preprocessed_train_data,
                 preprocessed_test_data,
-                self.datatransformation_config.preprocessor_pickle_file_path)
+                )
 
         except Exception as e:
             raise CustomException(e,sys)

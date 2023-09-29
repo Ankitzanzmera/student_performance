@@ -3,6 +3,8 @@ pandas
 seaborn
 matplotlib
 scikit-learn
+catboost
+xgboost
 pymysql
 python-dotenv
 flask

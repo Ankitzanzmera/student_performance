@@ -6,6 +6,8 @@ __pycache__/
 # personal
 /notes
 /logs
+/catboost_info
+
 # C extensions
 *.so
 
