@@ -3,6 +3,7 @@ sys.path.append(os.getcwd())
 from src.logger import logging
 from src.exception import CustomException
 from dotenv import load_dotenv
+import pickle
 import pymysql
 import pandas as pd
 
@@ -24,6 +25,18 @@ def read_data_from_sql():
 
         return df
 
+    except Exception as e:
+        raise CustomException(e,sys)
+    
 
+def save_object(filepath:str,obj:object):
+
+    try: 
+        dir_name = os.path.dirname(filepath)
+        os.makedirs(dir_name,exist_ok=True)
+
+        with open(filepath,'wb') as file_obj:
+            pickle.dump(obj,file_obj)
+            
     except Exception as e:
         raise CustomException(e,sys)
