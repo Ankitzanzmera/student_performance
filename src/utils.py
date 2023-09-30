@@ -54,8 +54,10 @@ def evaluate_model(models_list,X_train,y_train,X_test,y_test):
 
             grid_search = RandomizedSearchCV(model,parameters,verbose=False,n_iter=5)
             grid_search.fit(X_train,y_train)
+            best_params = grid_search.best_params_
 
-            model.set_params(**grid_search.best_params_)
+            model.set_params(**grid_search.best_params_)  
+            ## Double asterick means grid search will gives best params in Dict so ** will unpack that dictionary, like if {'A':50} the A = 50
             model.fit(X_train,y_train)
             
             y_train_pred = model.predict(X_train)
@@ -64,7 +66,7 @@ def evaluate_model(models_list,X_train,y_train,X_test,y_test):
             train_data_score = r2_score(y_train,y_train_pred)
             test_data_score = r2_score(y_test,y_test_pred)
 
-            report[list(models_list.keys())[i]] = [test_data_score,model]
+            report[list(models_list.keys())[i]] = [test_data_score,model,best_params]
             print(f'{list(models_list.keys())[i]} has done')
         
         return report

@@ -50,14 +50,21 @@ class ModelTrainer:
             logging.info('Model Evaluation Started')
             model_report:dict = evaluate_model(models,X_train,y_train,X_test,y_test)
             
-            best_model_score = max(model_report.values())[0]
+            best_model_score = max(model_report.values())[0]  ## will return model_score which have best accuracy
+            best_model = max(model_report.values())[1]    ## Will return tuned model from model_report which have best score
+            best_model_name = list(model_report.keys())[list(model_report.values()).index(max(model_report.values()))]  ## Will return name of the model which have best accuracy
+            best_model_params = max(model_report.values())[2] 
+
             if best_model_score < 0.6:
                 raise CustomException('No best model Found Which can satisfy our threshold value')
             tuned_model= max(model_report.values())[1]           
-            logging.info(f'Evaluation has ended and got Best model = {tuned_model}and its score on test data is {best_model_score}')
+            logging.info(f'Evaluation has ended and got Best model {best_model_name}:{best_model}and its score on test data is {best_model_score}')
 
-            save_object(self.model_trained_config.trained_model_file_path,
-                        tuned_model)
+            save_object(self.model_trained_config.trained_model_file_path,tuned_model)
+
+            return (best_model_name,best_model,best_model_params,X_test,y_test)
+
+            
 
         except Exception as e:
             raise CustomException(e,sys)

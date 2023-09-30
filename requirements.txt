@@ -8,4 +8,5 @@ xgboost
 pymysql
 python-dotenv
 flask
+mlflow
 # -e .

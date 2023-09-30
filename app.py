@@ -5,6 +5,7 @@ from src.exception import CustomException
 from src.components.data_ingestion import DataIngestion
 from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
+from src.components.model_monitoring import ModelMonitoring
 import numpy as np
 
 
@@ -22,8 +23,13 @@ if __name__ == "__main__":
         logging.info('Data Transformation has completed')
 
         model_trainer = ModelTrainer()
-        model_trainer.initiate_model_train(train_data,test_data)
+        best_model_name,best_model,best_params,X_test,y_test = model_trainer.initiate_model_train(train_data,test_data)
         logging.info('Modal Training has been Completed.')
+
+        model_monitoring = ModelMonitoring()
+        model_monitoring.initiate_model_monitoring(best_model_name,best_model,best_params,X_test,y_test)
+        logging.info('Experiment Loaded on Mlflow Sucessfully')
+
 
     except Exception as e:
         raise CustomException(e,sys)

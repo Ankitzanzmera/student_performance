@@ -67,8 +67,8 @@ class DataTransformation:
             num_feature.remove('math score')
             cate_feature = [feature for feature in train_data.columns if train_data[feature].dtypes == "object"]
             logging.info('Dividing Numerical and categorical Features')
-            preprocessor_obj = self.preprocessing_pipelines(num_feature,cate_feature)
 
+            preprocessor_obj = self.preprocessing_pipelines(num_feature,cate_feature)
 
             target_feature = 'math score'
 
